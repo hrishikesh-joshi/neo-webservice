@@ -33,8 +33,8 @@ public class NasaWebClient {
     @Value("${neo.api.key}")
     private String apiKey;
 
-    @Value("${neo.api.uri}")
-    private String apiURI;
+    @Value("${neo.api.url}")
+    private String apiURL;
 
     /**
      * findNearEarthObjects : API to find closest NearEarthObject from earth during given period
@@ -81,7 +81,7 @@ public class NasaWebClient {
     }
 
     private Mono<String> callNasaApi(LocalDate startDate, LocalDate endDate) {
-        return WebClient.create(apiURI)
+        return WebClient.create(apiURL)
                 .get()
                 .uri(uriBuilder -> uriBuilder.queryParam("api_key", apiKey)
                         .queryParam("start_date", startDate)

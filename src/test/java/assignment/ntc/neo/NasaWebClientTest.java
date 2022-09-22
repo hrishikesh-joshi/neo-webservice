@@ -50,7 +50,7 @@ class NasaWebClientTest {
 
     @DynamicPropertySource
     static void backendProperties(DynamicPropertyRegistry registry) {
-        registry.add("neo.api.uri", () -> mockWebServer.url("/nasa-api").toString());
+        registry.add("neo.api.url", () -> mockWebServer.url("/nasa-api").toString());
     }
 
     @Test

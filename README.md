@@ -24,6 +24,6 @@ This project uses gradle to build
 ./gradlew clean build bootRun to build and run the project from project root dir
 
 ### TODO
-Error cases for calling NASA API are not currently handled. 
-Also, there is a request limit of 1000 calls per hour to NASA API which is not explicitly handled at present. 
+Error cases for calling NASA API are not currently handled.  
+Also, there is a request limit of 1000 calls per hour to NASA API which is not explicitly handled at present.  
 OpenAPI documentation is to be added. 

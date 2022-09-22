@@ -5,6 +5,7 @@ import ch.qos.logback.classic.util.LoggerNameUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -15,7 +16,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-@RestController("/nasa-api/")
+@RestController()
+@RequestMapping("/find-neo")
 public class NeoWebService {
 
     @Autowired
@@ -26,7 +28,7 @@ public class NeoWebService {
         return "Hello";
     }
 
-    @GetMapping("/closestNearEarthObject")
+    @GetMapping("/closest")
     public Mono<List<NearEarthObject>> getClosestNearEarthObject(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") @NonNull LocalDate startDate, @RequestParam @NonNull LocalDate endDate) {
         System.out.println("getClosestNearEarthObject "+startDate+","+endDate);
         return nasaWebClient.findNearEarthObjects(startDate, endDate).log(System.Logger.Level.INFO.name());
